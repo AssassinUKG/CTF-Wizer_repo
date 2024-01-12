@@ -12,12 +12,17 @@ app.post('/calc', async (req, res) => {
         let json = req.body;
         let calc = String(json.calculation);
         res.send(String(Function("return " + calc)(require)));
-    } catch (error) {
+    } catch (e) {
         res.send(e.message);
         console.error(e.message);
     }
 
 });
+
+app.get('/calc', async (req, res) => {
+    res.send(String("Hello world"))
+})
+
 
 app.listen(process.env.port, () => {
   console.log(`api listening on port ${process.env.port}`);
